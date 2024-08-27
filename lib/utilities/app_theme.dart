@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AppTheme {
+class AppThemes {
   /// Static Colors
   static const Color primaryColor = Color(0xFF0c4e8a);
   static const Color primaryLightColor = Color(0xFF79d2f6);
@@ -45,13 +45,13 @@ class AppTheme {
       seedColor: primaryColor,
       primary: primaryColor,
       secondary: secondaryColor,
-      background: lightColor,
+      surface: lightColor,
       error: errorColor,
     ),
     bottomSheetTheme: const BottomSheetThemeData(
-      surfaceTintColor: AppTheme.lightColor,
-      backgroundColor: AppTheme.lightColor,
-      modalBackgroundColor: AppTheme.lightColor,
+      surfaceTintColor: AppThemes.lightColor,
+      backgroundColor: AppThemes.lightColor,
+      modalBackgroundColor: AppThemes.lightColor,
     ),
     appBarTheme: const AppBarTheme(
       backgroundColor: lightColor,
@@ -59,8 +59,8 @@ class AppTheme {
       centerTitle: false,
       scrolledUnderElevation: 0,
     ),
-    scaffoldBackgroundColor: AppTheme.lightColor,
-    canvasColor: AppTheme.lightColor,
+    scaffoldBackgroundColor: AppThemes.lightColor,
+    canvasColor: AppThemes.lightColor,
     useMaterial3: true,
     fontFamily: 'WorkSans',
     textTheme: const TextTheme(
