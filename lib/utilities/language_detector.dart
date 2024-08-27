@@ -6,11 +6,9 @@ class LanguageDetector {
     String sampleText2 = 'Hello World'; // English
     String sampleText3 = 'مرحبا Hello'; // Mixed
 
-    if (kDebugMode) {
-      print('Language Detection 1: ${detectLanguage(sampleText1)}'); // Arabic
-      print('Language Detection 2: ${detectLanguage(sampleText2)}'); // English
-      print('Language Detection 3: ${detectLanguage(sampleText3)}'); // Mixed
-    }
+    debugPrint('Language Detection 1: ${detectLanguage(sampleText1)}'); // Arabic
+    debugPrint('Language Detection 2: ${detectLanguage(sampleText2)}'); // English
+    debugPrint('Language Detection 3: ${detectLanguage(sampleText3)}'); // Mixed
   }
 
   String detectLanguage(String text) {
