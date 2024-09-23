@@ -27,6 +27,9 @@ class UserPreferences {
   static set isLogin(bool isLogin) {prefs.setBool('isLogin', isLogin);}
   static bool get isLogin => prefs.getBool('isLogin') ?? false;
 
+  static set loginData(Map<String, dynamic> value) {prefs.setString('loginData', jsonEncode(value));}
+  static Map<String, dynamic> get loginData => jsonDecode(prefs.getString('loginData') ?? "{}");
+
   // Function Example Syntax To Use
 
   static set saveMap(Map<String, dynamic> value) {prefs.setString('saveMap', jsonEncode(value));}

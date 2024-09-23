@@ -29,6 +29,8 @@ class AppThemes {
   static const Color blue200Color = Color(0xFFC5D5E3);
   static const Color blue300Color = Color(0xFF97B3CD);
   static const Color blue400Color = Color(0xFF94AAC5);
+  static const Color white = Color(0xFFFFFFFF);
+  static const Color black = Color(0xFF000000);
 
   /// Gradient Colors
   static List<Color> primaryGradient = [
