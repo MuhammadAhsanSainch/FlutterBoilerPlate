@@ -62,7 +62,7 @@ class _ConfirmationDialog extends State<ConfirmationDialog> {
                   child: const Text("No", style: TextStyle(color: AppThemes.white, fontWeight: FontWeight.bold),),
                 ),
                 ElevatedButton(
-                  style: ElevatedButton.styleFrom(minimumSize: Size(100, 30), backgroundColor: AppThemes.primaryColor),
+                  style: ElevatedButton.styleFrom(minimumSize: const Size(100, 30), backgroundColor: AppThemes.primaryColor),
                   onPressed: widget.onClickedYes,
                   child: const Text("Yes", style: TextStyle(color: AppThemes.white, fontWeight: FontWeight.bold),),
                 ),

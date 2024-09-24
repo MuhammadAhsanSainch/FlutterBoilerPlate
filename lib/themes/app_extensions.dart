@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 extension StringExtensionNotNull on String {
   bool get isNotNullAndNotEmpty => isNotEmpty;
 
@@ -99,8 +101,8 @@ void main() {
   }
 
   bool isBetween({required DateTime from, required DateTime to}) {
-    print("from $from ${isAfterOrEqual(from)}");
-    print("to $to ${isBeforeOrEqual(to)}");
+    debugPrint("from $from ${isAfterOrEqual(from)}");
+    debugPrint("to $to ${isBeforeOrEqual(to)}");
     return isAfterOrEqual(from) && isBeforeOrEqual(to);
   }
 
