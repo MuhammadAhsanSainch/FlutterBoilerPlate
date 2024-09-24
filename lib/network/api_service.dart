@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/http.dart';
 
 import '/network/interceptor/logging_interceptor.dart';
-import '/network/response/general_list_response.dart';
 import '/network/response/general_map_response.dart';
 import 'app_url.dart';
 
