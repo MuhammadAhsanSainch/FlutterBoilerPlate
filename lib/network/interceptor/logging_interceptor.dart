@@ -5,10 +5,10 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../dialog/error_dialog.dart';
-import '../../utilities/app_globals.dart';
-import '../../utilities/app_theme.dart';
+import '../../themes/app_globals.dart';
+import '../../themes/app_theme.dart';
 import '../../utilities/shared_preference.dart';
-import '../../widgets/button_widgets.dart';
+import '../../widgets/custom_button.dart';
 
 class Logging extends Interceptor {
   String endpoint = "";
@@ -25,22 +25,11 @@ class Logging extends Interceptor {
     });
     if (options.path != '/signin' &&
         options.path != '/signup' &&
-        options.path != '/forgetpassword' &&
-        options.path != '/products' &&
-        options.path != '/relatedproducts' &&
-        options.path != '/freight' &&
-        options.path != '/freightdiscounted' &&
-        options.path != '/slider' &&
-        options.path != '/categories' &&
-        options.path != '/pages' &&
-        options.path != '/getacall' &&
-        options.path != '/contact' &&
-        options.path != '/coupons' &&
-        options.path != '/reviews' &&
-        options.path != '/reviewadd') {
+        options.path != '/forgetpassword'
+    ) {
       options.headers.addEntries([MapEntry("AuthToken", UserPreferences.authToken)]);
     }
-    if (options.path == '/updateprofile' || options.path == '/ticketreply' || options.path == '/ticketadd') {
+    if (options.path == '/signup' || options.path == '/updateprofile') {
       options.contentType = 'multipart/form-data';
     }
     debugPrint('Currently Hit Complete API URL:\t\t${options.baseUrl}${options.path}');
@@ -145,19 +134,13 @@ class Logging extends Interceptor {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  ButtonWidget(
-                    onPressed: () async {
+                  CustomElevatedButton(
+                    onTap: () async {
                       SharedPreferences preferences = await SharedPreferences.getInstance();
                       await preferences.clear();
-                      Navigator.of(context).pushNamedAndRemoveUntil('/Welcome', (Route<dynamic> route) => false);
+                      /// Remove All Screens And Get Back To Login Screen
                     },
                     text: 'Okay',
-                    textFont: 14,
-                    btnColor: AppThemes.primaryColor,
-                    btnWidth: 90,
-                    btnHeight: 35,
-                    btnPadding: 5,
-                    icon: Icons.check,
                   ),
                 ],
               )

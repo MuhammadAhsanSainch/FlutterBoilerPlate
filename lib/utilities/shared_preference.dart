@@ -9,6 +9,10 @@ initializePreferences() async {
 }
 
 class UserPreferences {
+
+  static set currentServer(String currentServer) {prefs.setString('currentServer', currentServer);}
+  static String get currentServer => prefs.getString('currentServer') ?? "Live";
+
   static set apiURL(String apiURL) {prefs.setString('apiURL', apiURL);}
   static String get apiURL => prefs.getString('apiURL') ?? "";
 

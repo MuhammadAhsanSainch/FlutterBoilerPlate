@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 
-import "../utilities/app_theme.dart";
+import "../themes/app_theme.dart";
 
 class BottomBarWidget extends StatefulWidget {
   const BottomBarWidget({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../utilities/app_globals.dart';
-import '../utilities/app_theme.dart';
+import '../themes/app_globals.dart';
+import '../themes/app_theme.dart';
 
 class ErrorDialog extends StatefulWidget {
   final String description;
