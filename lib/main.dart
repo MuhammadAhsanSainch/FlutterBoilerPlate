@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:flutterboilerplate/screens/login/login_binding.dart';
-import 'package:flutterboilerplate/themes/app_globals.dart';
-import 'package:flutterboilerplate/themes/app_theme.dart';
+import '/themes/app_globals.dart';
+import '/themes/app_theme.dart';
 import 'package:get/get.dart';
 
 import 'screens/splash.dart';

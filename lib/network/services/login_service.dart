@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterboilerplate/themes/app_globals.dart';
+import '../../themes/app_globals.dart';
 import 'package:dio/dio.dart' as dio;
 import '../../network/app_url.dart';
 import '../../network/response/general_map_response.dart';

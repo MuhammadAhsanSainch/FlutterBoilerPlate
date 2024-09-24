@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutterboilerplate/utilities/shared_preference.dart';
+import 'shared_preference.dart';
 import 'package:socket_io_client/socket_io_client.dart' as io;
 
 class SocketService {
