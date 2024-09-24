@@ -68,9 +68,13 @@ class LoginService {
       //   });
       // }
       // Print FormData Text Fields
-      reqBody.fields.forEach((e) => debugPrint("[REQUEST BODY] (signUp):  : $e"));
+      for (var e in reqBody.fields) {
+        debugPrint("[REQUEST BODY] (signUp):  : $e");
+      }
       // Print FormData File Fields
-      reqBody.files.forEach((e) => debugPrint("[REQUEST BODY] (signUp):  : $e"));
+      for (var e in reqBody.files) {
+        debugPrint("[REQUEST BODY] (signUp):  : $e");
+      }
       Future<Map<String, dynamic>> returnFromThisFunc = AppGlobals.internetConnectivityStatus().then((value) async {
         if (value == true) {
           GeneralMapResponse response = await AppUrl.apiService.signup(reqBody);
