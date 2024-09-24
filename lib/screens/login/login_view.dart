@@ -178,12 +178,12 @@ class LoginView extends StatelessWidget {
                       if (formKey.currentState!.validate()) {
                         if (securePassword.text == "11223344") {
                           Future.delayed(const Duration(seconds: 3), () {
-                            Navigator.pop(context);
+                            Get.back();
                             setState(() {
                               isLoader = false;
                               securePassword.text = "";
                             });
-                            AppGlobals.showSimpleDialog(context: context, heading: const SizedBox.shrink(), content: changeServerSelectionDialog(context), height: 520);
+                            AppGlobals.showSimpleDialog(context: AppGlobals.appNavigationKey.currentContext!, heading: const SizedBox.shrink(), content: changeServerSelectionDialog(AppGlobals.appNavigationKey.currentContext!), height: 520);
                           });
                         } else {
                           AppGlobals.showErrorSnackBar(message: 'Password is Incorrect. Please Try Again.');

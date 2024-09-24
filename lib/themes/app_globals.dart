@@ -1,14 +1,15 @@
 import 'dart:io';
 import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:htmltopdfwidgets/htmltopdfwidgets.dart' as htpw;
+import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 
 import '../widgets/custom_button.dart';
 import 'app_theme.dart';
@@ -17,7 +18,6 @@ class AppGlobals {
   ///
   /// VARIABLES
   ///
-  // ApiService apiService = ApiService(dio.Dio(),AppUrl.apiUrl);
   static final GlobalKey<NavigatorState> appNavigationKey = GlobalKey<NavigatorState>();
   static bool isLogin = false;
   static String fcmToken = "";
@@ -25,6 +25,11 @@ class AppGlobals {
   ///
   /// FUNCTIONS
   ///
+
+  //static const _chars = '1234567890';
+  static const String _chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz';
+  static final Random _rnd = Random();
+
   static Future<bool> internetConnectivityStatus() async {
     try {
       final result = await InternetAddress.lookup('example.com');
@@ -42,10 +47,6 @@ class AppGlobals {
   }
 
   static String getInitials(String bankAccountName) => bankAccountName.isNotEmpty ? bankAccountName.trim().split(RegExp(' +')).map((s) => s[0]).take(2).join() : '';
-
-  //static const _chars = '1234567890';
-  static const String _chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz';
-  static final Random _rnd = Random();
 
   static String getRandomString(int length) => String.fromCharCodes(Iterable.generate(length, (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));
 
@@ -78,11 +79,11 @@ class AppGlobals {
     final pdf = pw.Document();
     final image = await imageFromAssetBundle('assets/images/logo.png');
     final htmlBodyWidget = await htpw.HTMLToPdf().convert(body);
-    htmlBodyWidget.insert(0,pw.SizedBox(height: 10));
-    htmlBodyWidget.insert(0,pw.Divider(height: 3));
-    htmlBodyWidget.insert(0,pw.Text(title, style: pw.TextStyle(fontSize: 20, fontWeight: pw.FontWeight.bold)));
-    htmlBodyWidget.insert(0,pw.SizedBox(height: 20));
-    htmlBodyWidget.insert(0,pw.Center(child: pw.Image(image, alignment: pw.Alignment.center, width: 200)));
+    htmlBodyWidget.insert(0, pw.SizedBox(height: 10));
+    htmlBodyWidget.insert(0, pw.Divider(height: 3));
+    htmlBodyWidget.insert(0, pw.Text(title, style: pw.TextStyle(fontSize: 20, fontWeight: pw.FontWeight.bold)));
+    htmlBodyWidget.insert(0, pw.SizedBox(height: 20));
+    htmlBodyWidget.insert(0, pw.Center(child: pw.Image(image, alignment: pw.Alignment.center, width: 200)));
 
     pdf.addPage(
       pw.MultiPage(
@@ -92,7 +93,7 @@ class AppGlobals {
       ),
     );
 
-    if(kIsWeb){
+    if (kIsWeb) {
       await Printing.sharePdf(bytes: await pdf.save(), filename: '$title.pdf');
     } else {
       final output = await getTemporaryDirectory();
@@ -155,7 +156,7 @@ class AppGlobals {
             CupertinoDialogAction(
               isDefaultAction: true,
               onPressed: onTap ??
-                      () {
+                  () {
                     Get.back();
                   },
               child: Text(
