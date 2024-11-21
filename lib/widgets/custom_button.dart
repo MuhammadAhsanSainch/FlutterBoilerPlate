@@ -6,41 +6,66 @@ class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({
     super.key,
     required this.text,
-    this.height = 44,
+    this.height = 55,
     this.width = 140,
+    this.fontSize = 16,
     this.onTap,
     this.padding,
     this.isEnabled = true,
+    this.buttonColor,
+    this.textColor,
+    this.icon,
   });
 
   final double? height;
   final double? width;
+  final double? fontSize;
   final String text;
+  final Color? buttonColor;
+  final Color? textColor;
   final VoidCallback? onTap;
   final EdgeInsetsGeometry? padding;
+  final Icon? icon;
   final bool isEnabled;
 
   @override
   Widget build(BuildContext context) {
     // final size = MediaQuery.sizeOf(context);
-    return Padding(
-      padding: padding ?? const EdgeInsets.symmetric(vertical: 20),
-      child: SizedBox(
-        width: width,
-        height: height,
-        child: ElevatedButton(
-          onPressed: isEnabled ? onTap : null,
-          style: ElevatedButton.styleFrom(
-              // maximumSize: Size(size.width, 40),
-              backgroundColor: AppThemes.primaryColor,
-              disabledBackgroundColor: AppThemes.blue300Color,
-              shape: RoundedRectangleBorder(
-                  side: BorderSide(
-                    color: isEnabled ? AppThemes.primaryColor : AppThemes.blue300Color,
-                    width: 1,
-                  ),
-                  borderRadius: const BorderRadius.all(Radius.circular(8)))),
-          child: Text(text, style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: AppThemes.lightColor, fontSize: 16, fontWeight: FontWeight.w600)),
+    return SizedBox(
+      width: width,
+      height: height,
+      child: ElevatedButton(
+        onPressed: isEnabled ? onTap : null,
+        style: ElevatedButton.styleFrom(
+          padding: padding ?? EdgeInsets.zero,
+          backgroundColor: buttonColor ?? AppThemes.primaryColor,
+          disabledBackgroundColor: AppThemes.lightGreyColor,
+          shape: RoundedRectangleBorder(
+            side: buttonColor != null
+                ? BorderSide.none
+                : BorderSide(
+              color: isEnabled ? AppThemes.primaryColor : AppThemes.lightGreyColor,
+              width: 1,
+            ),
+            borderRadius: const BorderRadius.all(
+              Radius.circular(8),
+            ),
+          ),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              text,
+              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                color: textColor ?? AppThemes.lightColor,
+                fontSize: fontSize,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            if (icon != null) const SizedBox(width: 5,),
+            if (icon != null) icon!,
+          ],
         ),
       ),
     );

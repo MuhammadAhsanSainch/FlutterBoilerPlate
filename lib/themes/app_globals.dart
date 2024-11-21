@@ -289,6 +289,15 @@ class AppGlobals {
     return "";
   }
 
+  static String convertToHumanReadable(String text) {
+    return text
+        .replaceAll(RegExp(r'[^a-zA-Z0-9]'), ' ') // Replace all non-alphanumeric characters with spaces
+        .split(' ') // Split the string by spaces
+        .where((word) => word.isNotEmpty) // Remove any empty words caused by multiple spaces
+        .map((word) => word[0].toUpperCase() + word.substring(1).toLowerCase()) // Capitalize each word
+        .join(' '); // Join the words back with a single space
+  }
+
   static String getCurrencySymbolFromCode(String code) {
     var format = NumberFormat.simpleCurrency(locale: Platform.localeName, name: code.toUpperCase());
     return format.currencySymbol;

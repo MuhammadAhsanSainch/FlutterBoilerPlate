@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'login/login_binding.dart';
+import 'login/login_view.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -16,9 +20,12 @@ class _SplashScreenState extends State<SplashScreen> {
     /// Run Code After Page UI Load
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       // Run Code After Page UI Load
-      Future.delayed(const Duration(seconds: 1), () async {
+      setState(() {
+        selected = true;
+      });
+      Future.delayed(const Duration(seconds: 3), () async {
         setState(() {
-
+          Get.offAll(() => LoginView(), bindings: [LoginBinding()]);
         });
       });
     });
@@ -33,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
       height: size.height,
       decoration: const BoxDecoration(
         color: Colors.white,
-        image: DecorationImage(image: AssetImage("assets/vectors/vector_1.png"), alignment: Alignment.topRight, fit: BoxFit.none, scale: 1.3),
+        image: DecorationImage(image: AssetImage("assets/images/splash-bg.png"), alignment: Alignment.topRight, fit: BoxFit.contain, scale: 1.3),
       ),
       // child: Center(
       //   child: Image.asset(
@@ -54,7 +61,7 @@ class _SplashScreenState extends State<SplashScreen> {
             child: GestureDetector(
               onTap: () {
                 setState(() {
-
+                  Get.offAll(() => LoginView(), bindings: [LoginBinding()]);
                 });
               },
               child: Center(

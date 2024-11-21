@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+
 import '../../../utilities/shared_preference.dart';
 import '../../themes/app_globals.dart';
 import '../../themes/app_theme.dart';
@@ -40,6 +41,19 @@ class LoginView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
+                  const SizedBox(
+                    height: 100,
+                  ),
+                  Center(
+                    child: SizedBox(
+                      width: 200,
+                      height: 200,
+                      child: Image.asset(
+                        "assets/images/logo.png",
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
                   CustomTextField(
                     controller: loginController.emailController,
                     outerPadding: const EdgeInsets.only(left: 2.0, top: 10),
@@ -53,9 +67,7 @@ class LoginView extends StatelessWidget {
                     inputFormatters: [
                       FilteringTextInputFormatter(RegExp(r'[a-zA-Z0-9@._-]'), allow: true),
                     ],
-                    onChanged: (String value) {
-
-                    },
+                    onChanged: (String value) {},
                   ),
                   CustomTextField(
                     controller: loginController.passwordController,
@@ -71,22 +83,31 @@ class LoginView extends StatelessWidget {
                     inputFormatters: [
                       FilteringTextInputFormatter(RegExp(r'[a-zA-Z0-9!#$%^&*()=+~`<>,/?:;"|\\@._-]'), allow: true),
                     ],
-                    onChanged: (String value) {
-
-                    },
+                    onChanged: (String value) {},
                   ),
                   CustomElevatedButton(
                     width: size.width,
                     text: "Login",
-                    onTap: () {
-
-                    },
+                    onTap: () {},
                   ),
+
                   ///TODO: Remove Beta Before Final Release
-                  if(Platform.isAndroid)
-                    const Text("v 1.0.0+1", style: TextStyle(fontSize: 10,), textAlign: TextAlign.right,)
+                  if (Platform.isAndroid)
+                    const Text(
+                      "v 1.0.0+1",
+                      style: TextStyle(
+                        fontSize: 10,
+                      ),
+                      textAlign: TextAlign.right,
+                    )
                   else
-                    const Text("v 1.0.0+1", style: TextStyle(fontSize: 10,), textAlign: TextAlign.right,)
+                    const Text(
+                      "v 1.0.0+1",
+                      style: TextStyle(
+                        fontSize: 10,
+                      ),
+                      textAlign: TextAlign.right,
+                    )
                 ],
               ),
             ),
@@ -124,16 +145,16 @@ class LoginView extends StatelessWidget {
                   ),
                   isLoader == true
                       ? const SizedBox(
-                    width: 50,
-                    height: 50,
-                    child: CircularProgressIndicator(
-                      color: AppThemes.primaryColor,
-                    ),
-                  )
+                          width: 50,
+                          height: 50,
+                          child: CircularProgressIndicator(
+                            color: AppThemes.primaryColor,
+                          ),
+                        )
                       : Image.asset(
-                    "assets/icons/lock.png",
-                    width: 50,
-                  ),
+                          "assets/icons/lock.png",
+                          width: 50,
+                        ),
                   const SizedBox(
                     height: 15,
                   ),
@@ -299,17 +320,13 @@ class LoginView extends StatelessWidget {
                           setState(() {
                             _customURLs = false;
                             UserPreferences.currentServer = value!;
-                            UserPreferences.apiURL =
-                            "https://edsidera-release-231650504fa8.herokuapp.com/api";
-                            UserPreferences.socketURL =
-                            "https://edsidera-release-231650504fa8.herokuapp.com";
-                            UserPreferences.webURL =
-                            "https://edsidera-release-231650504fa8.herokuapp.com/uploads";
+                            UserPreferences.apiURL = "https://edsidera-release-231650504fa8.herokuapp.com/api";
+                            UserPreferences.socketURL = "https://edsidera-release-231650504fa8.herokuapp.com";
+                            UserPreferences.webURL = "https://edsidera-release-231650504fa8.herokuapp.com/uploads";
                           });
                         },
                       ),
-                      const Text('Release',
-                          style: TextStyle(fontWeight: FontWeight.w500)),
+                      const Text('Release', style: TextStyle(fontWeight: FontWeight.w500)),
                     ],
                   ),
                 ),
@@ -356,39 +373,39 @@ class LoginView extends StatelessWidget {
                       ),
                       _customURLs == true
                           ? TextFormField(
-                        controller: serverURL,
-                        decoration: InputDecoration(
-                          label: const Text("Enter Server URL"),
-                          suffixIcon: IconButton(
-                            icon: const Icon(Icons.link),
-                            onPressed: () {},
-                          ),
-                        ),
-                      )
+                              controller: serverURL,
+                              decoration: InputDecoration(
+                                label: const Text("Enter Server URL"),
+                                suffixIcon: IconButton(
+                                  icon: const Icon(Icons.link),
+                                  onPressed: () {},
+                                ),
+                              ),
+                            )
                           : const SizedBox.shrink(),
                       _customURLs == true
                           ? TextFormField(
-                        controller: socketURL,
-                        decoration: InputDecoration(
-                          label: const Text("Enter Socket URL"),
-                          suffixIcon: IconButton(
-                            icon: const Icon(Icons.link),
-                            onPressed: () {},
-                          ),
-                        ),
-                      )
+                              controller: socketURL,
+                              decoration: InputDecoration(
+                                label: const Text("Enter Socket URL"),
+                                suffixIcon: IconButton(
+                                  icon: const Icon(Icons.link),
+                                  onPressed: () {},
+                                ),
+                              ),
+                            )
                           : const SizedBox.shrink(),
                       _customURLs == true
                           ? TextFormField(
-                        controller: webURL,
-                        decoration: InputDecoration(
-                          label: const Text("Enter Web URL"),
-                          suffixIcon: IconButton(
-                            icon: const Icon(Icons.link),
-                            onPressed: () {},
-                          ),
-                        ),
-                      )
+                              controller: webURL,
+                              decoration: InputDecoration(
+                                label: const Text("Enter Web URL"),
+                                suffixIcon: IconButton(
+                                  icon: const Icon(Icons.link),
+                                  onPressed: () {},
+                                ),
+                              ),
+                            )
                           : const SizedBox.shrink(),
                     ],
                   ),
