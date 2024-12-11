@@ -1,4 +1,4 @@
-# flutterboilerplate
+# flutter boilerplate
 
 A Boiler Plate Flutter Project.
 

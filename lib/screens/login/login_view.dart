@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -91,23 +90,6 @@ class LoginView extends StatelessWidget {
                     onTap: () {},
                   ),
 
-                  ///TODO: Remove Beta Before Final Release
-                  if (Platform.isAndroid)
-                    const Text(
-                      "v 1.0.0+1",
-                      style: TextStyle(
-                        fontSize: 10,
-                      ),
-                      textAlign: TextAlign.right,
-                    )
-                  else
-                    const Text(
-                      "v 1.0.0+1",
-                      style: TextStyle(
-                        fontSize: 10,
-                      ),
-                      textAlign: TextAlign.right,
-                    )
                 ],
               ),
             ),
